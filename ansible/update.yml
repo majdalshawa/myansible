@@ -1,11 +1,7 @@
 ---
-- name: Test basic commands on all Debian servers
-  hosts: My_servers
-  gather_facts: no
+- hosts: My_servers
   become: yes
   tasks:
-    - name: Check if the machine is reachable
-      ansible.builtin.command: echo "Machine is reachable"
-
-    - name: Check sudo permissions
-      ansible.builtin.command: sudo -l
+    - name: install net-tools
+      apt:
+        name: net-tools
