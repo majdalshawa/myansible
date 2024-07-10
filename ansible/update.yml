@@ -1,9 +1,13 @@
----
-- hosts: all
-
-  become: true
+- name: Update all Debian servers
+  hosts: My_servers
+  become: yes
   tasks:
-    - name: update apt packages
+    - name: Update the apt package index
       apt:
-        upgrade: yes
         update_cache: yes
+
+    - name: Upgrade all apt packages to the latest version
+      apt:
+        upgrade: dist
+        autoremove: yes
+        autoclean: yes
