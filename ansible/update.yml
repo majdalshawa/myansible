@@ -1,6 +1,6 @@
 ---
 - name: Test basic commands on all Debian servers
-  hosts: debian_servers
+  hosts: My_servers
   gather_facts: no
   become: yes
   tasks:
