@@ -1,14 +1,11 @@
-- name: Update all Debian servers
-  hosts: My_servers
+---
+- name: Test basic commands on all Debian servers
+  hosts: debian_servers
   gather_facts: no
   become: yes
   tasks:
-    - name: Update the apt package index
-      apt:
-        update_cache: yes
+    - name: Check if the machine is reachable
+      ansible.builtin.command: echo "Machine is reachable"
 
-    - name: Upgrade all apt packages to the latest version
-      apt:
-        upgrade: dist
-        autoremove: yes
-        autoclean: yes
+    - name: Check sudo permissions
+      ansible.builtin.command: sudo -l
